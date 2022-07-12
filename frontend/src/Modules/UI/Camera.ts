@@ -11,7 +11,7 @@ export default class Camera {
     gameContext: GameContext,
     x: number,
     y: number,
-    cameraspeed: number = 2
+    cameraspeed: number = 10
   ) {
     this.gameContext = gameContext;
     this.x = x;
@@ -32,7 +32,8 @@ export default class Camera {
     this.cameraLock = { leftUp, rightDown };
     this.cameraLock.rightDown.sub(width, height);
   }
-  moveCamera(): Camera {
+
+  inputCamera(): Camera {
     if (keyIsDown(LEFT_ARROW)) {
       this.x += 5;
     }

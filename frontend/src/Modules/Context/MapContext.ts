@@ -1,5 +1,7 @@
 import P5, { Vector } from "p5";
 import Tile from "../MapElements/Tile";
+import { GroundEnums } from "../Types/Ground/GroundEnums";
+import MapGenerator from "../Util/MapGenerator";
 import GameContext from "./GameContext";
 
 export default class MapContext {
@@ -21,6 +23,11 @@ export default class MapContext {
     this.tileSize = tileSize;
   }
   generateTiles() {
+    this.GenerateEmpty();
+    MapGenerator.BaseGeneration(this.tiles);
+    MapGenerator.GenerateCaves(this.tiles);
+  }
+  private GenerateEmpty() {
     for (let i = 0; i < this.mapSizeX; i++) {
       this.tiles[i] = [];
       for (let j = 0; j < this.mapSizeY; j++) {
@@ -31,7 +38,8 @@ export default class MapContext {
           this.tileSize,
           this.tileSize,
           j % 2 === 0 ? "yellow" : "green",
-          `${i} ${j}`
+          `${i} ${j}`,
+          GroundEnums.NONE
         );
       }
     }
