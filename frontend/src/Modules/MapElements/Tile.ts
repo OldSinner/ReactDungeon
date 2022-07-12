@@ -1,4 +1,5 @@
 import GameContext from "../Context/GameContext";
+import MapContext from "../Context/MapContext";
 
 export default class Tile {
   color: string;
@@ -6,9 +7,9 @@ export default class Tile {
   y: number;
   width: number;
   height: number;
-  context!: GameContext;
+  context!: MapContext;
   constructor(
-    context: GameContext,
+    context: MapContext,
     x: number,
     y: number,
     width: number,
@@ -23,7 +24,7 @@ export default class Tile {
     this.color = color;
   }
   draw() {
-    this.context.p5.fill(this.color);
-    this.context.p5.rect(this.x, this.y, this.width, this.height);
+    fill(this.color);
+    rect(this.x * this.width, this.y * this.height, this.width, this.height);
   }
 }

@@ -1,12 +1,21 @@
-import P5 from "p5";
+import P5, { Vector } from "p5";
+import Camera from "../UI/Camera";
 import MapContext from "./MapContext";
 
 export default class GameContext {
-  p5?: P5;
   mapContext: MapContext;
-  setup(p5: P5) {
-    this.p5 = p5;
-    this.mapContext = new MapContext(p5);
+  camera: Camera;
+
+  setup() {
+    this.camera = new Camera(0, 0);
+    this.mapContext = new MapContext(50, 50, 30);
+    this.mapContext.generateTiles();
+    this.camera.setcameraLock(
+      new Vector(0, 0),
+      this.mapContext.getSizeInPixels()
+    );
   }
-  draw = () => {};
+  draw = () => {
+    this.mapContext.drawMap();
+  };
 }
