@@ -1,12 +1,29 @@
 import { Vector } from "p5";
 import "p5";
+import GameContext from "../Context/GameContext";
 export default class Camera {
   x: number;
   y: number;
+  cameraspeed: number;
   cameraLock: { leftUp: Vector; rightDown: Vector };
-  constructor(x: number, y: number) {
+  gameContext: GameContext;
+  constructor(
+    gameContext: GameContext,
+    x: number,
+    y: number,
+    cameraspeed: number = 2
+  ) {
+    this.gameContext = gameContext;
     this.x = x;
     this.y = y;
+    this.cameraspeed = cameraspeed;
+    window.mouseWheel = (e: WheelEvent) => this.zoomCamera(e);
+    return this;
+  }
+  zoomCamera(e: WheelEvent) {
+    const mapContext = this.gameContext.mapContext;
+    mapContext.setTileSize(e.deltaY * -0.01);
+    this.setcameraLock(new Vector(0, 0), mapContext.getSizeInPixels());
   }
   getOffset(): Vector {
     return createVector(this.x, this.y);
@@ -14,9 +31,8 @@ export default class Camera {
   setcameraLock(leftUp: Vector, rightDown: Vector) {
     this.cameraLock = { leftUp, rightDown };
     this.cameraLock.rightDown.sub(width, height);
-    console.log(this.cameraLock);
   }
-  moveCamera() {
+  moveCamera(): Camera {
     if (keyIsDown(LEFT_ARROW)) {
       this.x += 5;
     }
@@ -35,5 +51,6 @@ export default class Camera {
       this.x = -this.cameraLock.rightDown.x;
     if (this.y < -this.cameraLock.rightDown.y)
       this.y = -this.cameraLock.rightDown.y;
+    return this;
   }
 }
