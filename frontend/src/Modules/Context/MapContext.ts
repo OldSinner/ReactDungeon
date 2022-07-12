@@ -21,6 +21,7 @@ export default class MapContext {
     mapGenerator.GenerateIron();
     mapGenerator.generateStartArea();
     // Life
+    mapGenerator.generateLife();
   }
   private GenerateEmpty() {
     for (let i = 0; i < this.mapSizeX; i++) {

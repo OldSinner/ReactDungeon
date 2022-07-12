@@ -123,4 +123,22 @@ export default class MapGenerator {
       }
     }
   }
+  generateLife() {
+    const contextMap = context.mapContext;
+    const un_tree = objsManager.FrontTiles["un_tree"];
+    const InnerStone = objsManager.BackTiles["InnerStone"];
+    const tiles = contextMap.tiles;
+    for (let i = 0; i < tiles.length; i++) {
+      for (let j = 0; j < tiles[0].length; j++) {
+        if (
+          tiles[i][j].frontTile == null &&
+          tiles[i][j].backTile == InnerStone
+        ) {
+          if (random(100) > 80) {
+            tiles[i][j].setFront(un_tree);
+          }
+        }
+      }
+    }
+  }
 }
