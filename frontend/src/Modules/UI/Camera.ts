@@ -1,19 +1,12 @@
 import { Vector } from "p5";
 import "p5";
-import GameContext from "../Context/GameContext";
+import WorldContext from "../Context/WorldContext";
 export default class Camera {
   x: number;
   y: number;
   cameraspeed: number;
   cameraLock: { leftUp: Vector; rightDown: Vector };
-  gameContext: GameContext;
-  constructor(
-    gameContext: GameContext,
-    x: number,
-    y: number,
-    cameraspeed: number = 10
-  ) {
-    this.gameContext = gameContext;
+  constructor(x: number, y: number, cameraspeed: number = 10) {
     this.x = x;
     this.y = y;
     this.cameraspeed = cameraspeed;
@@ -21,7 +14,7 @@ export default class Camera {
     return this;
   }
   zoomCamera(e: WheelEvent) {
-    const mapContext = this.gameContext.mapContext;
+    const mapContext = context.mapContext;
     mapContext.setTileSize(e.deltaY * -0.01);
     this.setcameraLock(new Vector(0, 0), mapContext.getSizeInPixels());
   }

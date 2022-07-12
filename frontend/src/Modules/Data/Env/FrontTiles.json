@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Stone",
+    "sprite": "stone_01"
+  },
+  {
+    "name": "GoldOre",
+    "sprite": "gold_o_01"
+  },
+  {
+    "name": "IronOre",
+    "sprite": "iron_o_01"
+  },
+  {
+    "name": "un_tree",
+    "sprite": "un_tree_01"
+  }
+]

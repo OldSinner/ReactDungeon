@@ -10,5 +10,8 @@ export default class AssetsManager {
     this.sprites["stone_02"] = loadImage("/Assets/Sprites/Env/Stone_02.jpg");
     this.sprites["gold_o_01"] = loadImage("/Assets/Sprites/Env/GoldOre_01.jpg");
     this.sprites["iron_o_01"] = loadImage("/Assets/Sprites/Env/IronOre_01.jpg");
+    this.sprites["un_tree_01"] = loadImage(
+      "/Assets/Sprites/Res/Un_Tree_01.png"
+    );
   }
 }

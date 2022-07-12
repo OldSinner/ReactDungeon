@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Grass",
+    "sprite": "grass_01"
+  },
+  {
+    "name": "Sand",
+    "sprite": "sand_01"
+  },
+  {
+    "name": "InnerStone",
+    "sprite": "stone_02"
+  }
+]

@@ -1,5 +1,7 @@
 import "p5/global";
-import MapContext from "./src/Modules/Context/MapContext";
+import AssetsManager from "./src/Modules/Context/AssetsManager";
+import WorldContext from "./src/Modules/Context/WorldContext";
+import ObjectManager from "./src/Modules/Context/ObjectManager";
 
 declare global {
   interface Window {
@@ -7,4 +9,7 @@ declare global {
     draw: () => void;
     setup: () => void;
   }
+  var context: WorldContext;
+  var assets: AssetsManager;
+  var objsManager: ObjectManager;
 }

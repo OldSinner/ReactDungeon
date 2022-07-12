@@ -1,54 +1,32 @@
 import P5, { Vector } from "p5";
 import Tile from "../MapElements/Tile";
-import { GroundEnums } from "../Types/Ground/GroundEnums";
 import MapGenerator from "../Util/MapGenerator";
-import GameContext from "./GameContext";
 
 export default class MapContext {
   tiles: Tile[][] = [];
   mapSizeX: number;
   mapSizeY: number;
   tileSize: number;
-  canvasSize: Vector;
-  gameContext: GameContext;
-  mapGenerator: MapGenerator;
-  startAreaSize: number;
-  constructor(
-    gameContext: GameContext,
-    mapSizeX: number,
-    mapSizeY: number,
-    tileSize: number,
-    startAreaSize: number = 5
-  ) {
-    this.gameContext = gameContext;
+  constructor(mapSizeX: number, mapSizeY: number, tileSize: number) {
     this.mapSizeX = mapSizeX;
     this.mapSizeY = mapSizeY;
     this.tileSize = tileSize;
-    this.mapGenerator = new MapGenerator(this);
-    this.startAreaSize = startAreaSize;
+    this.GenerateEmpty();
   }
   generateTiles() {
-    this.GenerateEmpty();
-    this.mapGenerator.BaseGeneration();
-    this.mapGenerator.GenerateCaves();
-    this.mapGenerator.GenerateGold();
-    this.mapGenerator.GenerateIron();
-    this.mapGenerator.generateStartArea();
+    const mapGenerator = new MapGenerator(5);
+    mapGenerator.BaseGeneration();
+    mapGenerator.GenerateCaves();
+    mapGenerator.GenerateGold();
+    mapGenerator.GenerateIron();
+    mapGenerator.generateStartArea();
+    // Life
   }
   private GenerateEmpty() {
     for (let i = 0; i < this.mapSizeX; i++) {
       this.tiles[i] = [];
       for (let j = 0; j < this.mapSizeY; j++) {
-        this.tiles[i][j] = new Tile(
-          this,
-          j,
-          i,
-          this.tileSize,
-          this.tileSize,
-          j % 2 === 0 ? "yellow" : "green",
-          `${i} ${j}`,
-          GroundEnums.NONE
-        );
+        this.tiles[i][j] = new Tile(j, i, this.tileSize, this.tileSize);
       }
     }
   }
@@ -77,7 +55,7 @@ export default class MapContext {
     });
   }
   getTileBaseOnPosition(position: Vector): Tile {
-    const camera = this.gameContext.camera;
+    const camera = context.camera;
     let x = Math.floor((position.x + -camera.x) / this.tileSize);
     let y = Math.floor((position.y + -camera.y) / this.tileSize);
     if (x < 0) x = 0;
