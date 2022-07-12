@@ -4,4 +4,6 @@ export enum GroundEnums {
   GRASS,
   NONE,
   INSIDESTONE,
+  GOLD_O,
+  IRON_O,
 }

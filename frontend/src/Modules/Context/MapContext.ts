@@ -11,21 +11,29 @@ export default class MapContext {
   tileSize: number;
   canvasSize: Vector;
   gameContext: GameContext;
+  mapGenerator: MapGenerator;
+  startAreaSize: number;
   constructor(
     gameContext: GameContext,
     mapSizeX: number,
     mapSizeY: number,
-    tileSize: number
+    tileSize: number,
+    startAreaSize: number = 5
   ) {
     this.gameContext = gameContext;
     this.mapSizeX = mapSizeX;
     this.mapSizeY = mapSizeY;
     this.tileSize = tileSize;
+    this.mapGenerator = new MapGenerator(this);
+    this.startAreaSize = startAreaSize;
   }
   generateTiles() {
     this.GenerateEmpty();
-    MapGenerator.BaseGeneration(this.tiles);
-    MapGenerator.GenerateCaves(this.tiles);
+    this.mapGenerator.BaseGeneration();
+    this.mapGenerator.GenerateCaves();
+    this.mapGenerator.GenerateGold();
+    this.mapGenerator.GenerateIron();
+    this.mapGenerator.generateStartArea();
   }
   private GenerateEmpty() {
     for (let i = 0; i < this.mapSizeX; i++) {
@@ -77,5 +85,23 @@ export default class MapContext {
     if (x >= this.mapSizeX) x = this.mapSizeX - 1;
     if (y >= this.mapSizeY) y = this.mapSizeY - 1;
     return this.tiles[y][x];
+  }
+  getSurroundingTiles(tile: Tile): Tile[] {
+    const surroundingTiles: Tile[] = [];
+    const x = tile.x;
+    const y = tile.y;
+    if (x - 1 >= 0) {
+      surroundingTiles.push(this.tiles[y][x - 1]);
+    }
+    if (x + 1 < this.mapSizeX) {
+      surroundingTiles.push(this.tiles[y][x + 1]);
+    }
+    if (y - 1 >= 0) {
+      surroundingTiles.push(this.tiles[y - 1][x]);
+    }
+    if (y + 1 < this.mapSizeY) {
+      surroundingTiles.push(this.tiles[y + 1][x]);
+    }
+    return surroundingTiles;
   }
 }

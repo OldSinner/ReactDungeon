@@ -92,6 +92,26 @@ export default class Tile {
         );
         break;
 
+      case GroundEnums.GOLD_O:
+        image(
+          this.context.gameContext.assetManager.sprites["gold_o_01"],
+          this.x * this.width,
+          this.y * this.height,
+          this.width,
+          this.height
+        );
+        break;
+
+      case GroundEnums.IRON_O:
+        image(
+          this.context.gameContext.assetManager.sprites["iron_o_01"],
+          this.x * this.width,
+          this.y * this.height,
+          this.width,
+          this.height
+        );
+        break;
+
       default:
         rect(
           this.x * this.width,

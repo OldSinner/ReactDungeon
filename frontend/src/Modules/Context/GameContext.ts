@@ -14,7 +14,7 @@ export default class GameContext {
     this.assetManager = new AssetsManager();
     this.assetManager.loadAssets();
     this.camera = new Camera(this, 0, 0, 10);
-    this.mapContext = new MapContext(this, 20, 20, 90);
+    this.mapContext = new MapContext(this, 50, 50, 90);
     this.mouse = new Mouse(this);
     this.mapContext.generateTiles();
     this.setCameraLock();
