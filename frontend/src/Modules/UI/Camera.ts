@@ -27,17 +27,29 @@ export default class Camera {
   }
 
   inputCamera(): Camera {
+    // if (context.mouse.x < 50) {
+    //   this.x += this.cameraspeed;
+    // }
+    // if (context.mouse.x > width - 50) {
+    //   this.x -= this.cameraspeed;
+    // }
+    // if (context.mouse.y < 50) {
+    //   this.y += this.cameraspeed;
+    // }
+    // if (context.mouse.y > height - 50) {
+    //   this.y -= this.cameraspeed;
+    // }
     if (keyIsDown(LEFT_ARROW)) {
-      this.x += 5;
+      this.x += this.cameraspeed;
     }
     if (keyIsDown(RIGHT_ARROW)) {
-      this.x -= 5;
+      this.x -= this.cameraspeed;
     }
     if (keyIsDown(UP_ARROW)) {
-      this.y += 5;
+      this.y += this.cameraspeed;
     }
     if (keyIsDown(DOWN_ARROW)) {
-      this.y -= 5;
+      this.y -= this.cameraspeed;
     }
     if (this.x > this.cameraLock.leftUp.x) this.x = this.cameraLock.leftUp.x;
     if (this.y > this.cameraLock.leftUp.y) this.y = this.cameraLock.leftUp.y;

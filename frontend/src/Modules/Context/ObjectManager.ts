@@ -12,7 +12,10 @@ export default class ObjectManager {
       this.BackTiles[data.name] = new BackTile(data.sprite);
     });
     frontTilesData.forEach((element) => {
-      this.FrontTiles[element.name] = new FrontTile(element.sprite);
+      this.FrontTiles[element.name] = new FrontTile(
+        element.sprite,
+        element.isVisibleThrough
+      );
     });
   }
 }

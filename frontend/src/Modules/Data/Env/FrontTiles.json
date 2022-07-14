@@ -1,18 +1,22 @@
 [
   {
     "name": "Stone",
-    "sprite": "stone_01"
+    "sprite": "stone_01",
+    "isVisibleThrough": false
   },
   {
     "name": "GoldOre",
-    "sprite": "gold_o_01"
+    "sprite": "gold_o_01",
+    "isVisibleThrough": false
   },
   {
     "name": "IronOre",
-    "sprite": "iron_o_01"
+    "sprite": "iron_o_01",
+    "isVisibleThrough": false
   },
   {
     "name": "un_tree",
-    "sprite": "un_tree_01"
+    "sprite": "un_tree_01",
+    "isVisibleThrough": true
   }
 ]

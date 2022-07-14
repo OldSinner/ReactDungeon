@@ -6,6 +6,7 @@ export interface ITile {
   y: number;
   width: number;
   height: number;
+  isDisovered: boolean;
   backTile: IBackTile;
   frontTile?: IFrontTile;
 }
@@ -14,4 +15,5 @@ export interface IBackTile {
 }
 export interface IFrontTile {
   sprite: string;
+  isVisibleThrough: boolean;
 }

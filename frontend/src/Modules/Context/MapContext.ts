@@ -22,6 +22,7 @@ export default class MapContext {
     mapGenerator.generateStartArea();
     // Life
     mapGenerator.generateLife();
+    this.tiles[0][0].discoverTiles();
   }
   private GenerateEmpty() {
     for (let i = 0; i < this.mapSizeX; i++) {

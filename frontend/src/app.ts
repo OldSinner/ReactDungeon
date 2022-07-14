@@ -18,6 +18,7 @@ window.setup = () => {
   //Setup
   frameRate(30);
   context.setup();
+  createButton("Score: ");
 };
 window.draw = () => {
   push();
@@ -25,6 +26,7 @@ window.draw = () => {
   background(0);
   context.draw();
   pop();
+  context.postDraw();
   text(Math.floor(frameRate()), 10, 10);
 
   // save data in local storage

@@ -16,6 +16,6 @@ export default class Mouse {
   pressedMouse() {
     const mapContext = context.mapContext;
     const tile = mapContext.getTileBaseOnPosition(new Vector(this.x, this.y));
-    console.log(tile);
+    tile.destroyFrontTile();
   }
 }
