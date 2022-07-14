@@ -1,19 +1,21 @@
-import BackTile from "../MapElements/BackTile";
-import FrontTile from "../MapElements/FrontTile";
+import BackTile from '../MapElements/BackTile';
+import FrontTile from '../MapElements/FrontTile';
 
 export interface ITile {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  isDisovered: boolean;
-  backTile: IBackTile;
-  frontTile?: IFrontTile;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    isDisovered: boolean;
+    backTile: IBackTile;
+    frontTile?: IFrontTile;
 }
 export interface IBackTile {
-  sprite: string;
+    nameTile: string;
+    sprite: string;
 }
 export interface IFrontTile {
-  sprite: string;
-  isVisibleThrough: boolean;
+    nameTile: string;
+    sprite: string;
+    isVisibleThrough: boolean;
 }
