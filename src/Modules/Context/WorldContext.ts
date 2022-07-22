@@ -2,8 +2,6 @@ import P5, { Vector } from 'p5';
 import Camera from '../UI/Camera';
 import KeyboardHandler from '../UI/KeyboardHandler';
 import MouseHandler from '../UI/MouseHandler';
-import UISystem from '../UI/UISystem';
-import Storage from '../Util/Storage';
 import MapContext from './MapContext';
 
 export default class WorldContext {
@@ -11,14 +9,12 @@ export default class WorldContext {
     camera: Camera;
     mouse: MouseHandler;
     keyboard: KeyboardHandler;
-    uiSystem: UISystem;
 
     setup() {
         // Init Utils
         this.camera = new Camera(0, 0, 10);
         this.mouse = new MouseHandler();
         this.keyboard = new KeyboardHandler();
-        this.uiSystem = new UISystem();
         // Init World
         // if (Storage.isSave()) {
         //     this.mapContext = new MapContext(50, 50, 90);
@@ -36,9 +32,7 @@ export default class WorldContext {
         this.keyboard.update();
         this.mapContext.drawMap();
     };
-    postDraw = () => {
-        this.uiSystem.draw();
-    };
+    postDraw = () => {};
     private setCameraLock() {
         this.camera.setcameraLock(new Vector(0, 0), this.mapContext.getSizeInPixels());
     }

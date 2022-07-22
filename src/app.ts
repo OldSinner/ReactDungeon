@@ -2,7 +2,6 @@ import 'p5';
 import AssetsManager from './Modules/Context/AssetsManager';
 import WorldContext from './Modules/Context/WorldContext';
 import ObjectManager from './Modules/Context/ObjectManager';
-import Storage from './Modules/Util/Storage';
 window.setup = () => {
     createCanvas(window.innerWidth - 100, window.innerHeight - 50);
     background(0);
@@ -28,9 +27,4 @@ window.draw = () => {
     pop();
     context.postDraw();
     text(Math.floor(frameRate()), 10, 10);
-
-    // save data in local storage
-    if (keyIsDown(CONTROL) && keyIsDown(SHIFT)) {
-        Storage.SaveData();
-    }
 };

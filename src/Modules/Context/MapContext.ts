@@ -1,6 +1,6 @@
 import P5, { Vector } from 'p5';
+import FrontTile from '../MapElements/FrontTile';
 import Tile from '../MapElements/Tile';
-import MapGenerator from '../Util/MapGenerator';
 
 export default class MapContext {
     tiles: Tile[][] = [];
@@ -13,22 +13,13 @@ export default class MapContext {
         this.tileSize = tileSize;
         this.GenerateEmpty();
     }
-    generateTiles() {
-        const mapGenerator = new MapGenerator(5);
-        mapGenerator.BaseGeneration();
-        mapGenerator.GenerateCaves();
-        mapGenerator.GenerateGold();
-        mapGenerator.GenerateIron();
-        mapGenerator.generateStartArea();
-        // Life
-        mapGenerator.generateLife();
-        this.tiles[0][0].discoverTiles();
-    }
+    generateTiles() {}
     private GenerateEmpty() {
         for (let i = 0; i < this.mapSizeX; i++) {
             this.tiles[i] = [];
             for (let j = 0; j < this.mapSizeY; j++) {
                 this.tiles[i][j] = new Tile(j, i, this.tileSize, this.tileSize);
+                this.tiles[i][j].addFront(new FrontTile('grass_01', 'grass_01', true));
             }
         }
     }
