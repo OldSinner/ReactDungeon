@@ -1,25 +1,21 @@
 {
-  "name": "reactdungeon",
-  "version": "0.0.1",
+  "name": "typeDungeon",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "source": "src/index.html",
   "scripts": {
-    "front": "cd./frontend/ && npm start",
-    "back": "cd./backend/ && ts-node src/app.ts",
-    "dev": "concurrently \"cd ./backend/ && ts-node src/app.ts\" \"cd./frontend/ && npm start\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OldSinner/ReactDungeon.git"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OldSinner/ReactDungeon/issues"
-  },
-  "homepage": "https://github.com/OldSinner/ReactDungeon#readme",
   "dependencies": {
-    "concurrently": "^7.2.2",
-    "react-p5": "^1.3.30"
+    "@types/p5": "^1.4.2",
+    "p5": "^1.4.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.0",
+    "typedoc": "^0.22.17"
   }
 }
