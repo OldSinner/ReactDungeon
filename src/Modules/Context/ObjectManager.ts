@@ -12,7 +12,14 @@ export default class ObjectManager {
             this.BackTiles[data.name] = new BackTile(data.sprite, data.name);
         });
         EnvTilesData.forEach((data) => {
-            this.EnvTiles[data.name] = new TileObject(data.name, data.sprites, data.height, data.width, data.order);
+            this.EnvTiles[data.name] = new TileObject(
+                data.name,
+                data.sprites,
+                data.height,
+                data.width,
+                data.order,
+                data.blockPlaces
+            );
         });
     }
 }

@@ -1,9 +1,18 @@
 [
     {
-        "name": "Tree",
-        "sprites": ["tree_01"],
+        "name": "tree_01",
+        "sprites": ["tree_01_01", "tree_01_02"],
         "height": 2,
         "width": 1,
-        "order": 2
+        "order": 2,
+        "blockPlaces": true
+    },
+    {
+        "name": "floor_w_01",
+        "sprites": ["floor_w_01"],
+        "height": 1,
+        "width": 1,
+        "order": 1,
+        "blockPlaces": false
     }
 ]

@@ -9,7 +9,7 @@ export default class MapContext {
     mapSizeY: number;
     tileSize: number;
     _MAXORDER_: number = 10;
-    tileObject: TileObject[];
+    tileObject: TileObject[] = [];
     constructor(mapSizeX: number, mapSizeY: number, tileSize: number) {
         this.mapSizeX = mapSizeX;
         this.mapSizeY = mapSizeY;
@@ -33,7 +33,7 @@ export default class MapContext {
             });
         });
 
-        if (this.tileObject) {
+        if (this.tileObject.length > 0) {
             for (let i = 0; i < this._MAXORDER_; i++) {
                 this.tileObject.forEach((tileObject) => {
                     if (tileObject.order == i) {
@@ -84,5 +84,16 @@ export default class MapContext {
             surroundingTiles.push(this.tiles[y + 1][x]);
         }
         return surroundingTiles;
+    }
+    addTileObject(tileObject: TileObject) {
+        this.tileObject.push(tileObject);
+        this.tileObject = this.tileObject.sort((a, b) => {
+            if (a.tile.y > b.tile.y) {
+                return 1;
+            } else {
+                return -1;
+            }
+            return 0;
+        });
     }
 }

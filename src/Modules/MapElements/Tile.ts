@@ -1,5 +1,6 @@
 import { Color } from 'p5';
 import MapContext from '../Context/MapContext';
+import TileObject from '../Objects/TileObject';
 import BackTile from './BackTile';
 
 export default class Tile {
@@ -8,6 +9,8 @@ export default class Tile {
     width: number;
     height: number;
     backTile: BackTile;
+    tileObj?: TileObject[] = [];
+    isOccupied: boolean = false;
     constructor(x: number, y: number, width: number, height: number) {
         this.x = x;
         this.y = y;
@@ -40,5 +43,8 @@ export default class Tile {
 
     setBack(backTile: BackTile) {
         this.backTile = backTile;
+    }
+    setTileObject(tileObject: TileObject) {
+        this.tileObj.push(tileObject);
     }
 }

@@ -15,8 +15,11 @@ export default class MouseHandler {
         this.y = mouseY;
         const mapContext = context.mapContext;
         const tile = mapContext.getTileBaseOnPosition(new Vector(this.x, this.y));
-        console.log(tile);
-        console.log(width + ' ' + height);
+        if (keyIsDown(CONTROL)) {
+            objsManager.EnvTiles['floor_w_01'].build(tile);
+        } else {
+            objsManager.EnvTiles['tree_01'].build(tile);
+        }
     }
 }
 
