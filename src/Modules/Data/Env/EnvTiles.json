@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Tree",
+        "sprites": ["tree_01"],
+        "height": 2,
+        "width": 1,
+        "order": 2
+    }
+]

@@ -1,12 +1,15 @@
 import P5, { Vector } from 'p5';
-import FrontTile from '../MapElements/FrontTile';
+import BackTile from '../MapElements/BackTile';
 import Tile from '../MapElements/Tile';
+import TileObject from '../Objects/TileObject';
 
 export default class MapContext {
     tiles: Tile[][] = [];
     mapSizeX: number;
     mapSizeY: number;
     tileSize: number;
+    _MAXORDER_: number = 10;
+    tileObject: TileObject[];
     constructor(mapSizeX: number, mapSizeY: number, tileSize: number) {
         this.mapSizeX = mapSizeX;
         this.mapSizeY = mapSizeY;
@@ -19,7 +22,7 @@ export default class MapContext {
             this.tiles[i] = [];
             for (let j = 0; j < this.mapSizeY; j++) {
                 this.tiles[i][j] = new Tile(j, i, this.tileSize, this.tileSize);
-                this.tiles[i][j].addFront(new FrontTile('grass_01', 'grass_01', true));
+                this.tiles[i][j].setBack(new BackTile('grass_01', 'grass_01'));
             }
         }
     }
@@ -29,6 +32,16 @@ export default class MapContext {
                 tile.draw();
             });
         });
+
+        if (this.tileObject) {
+            for (let i = 0; i < this._MAXORDER_; i++) {
+                this.tileObject.forEach((tileObject) => {
+                    if (tileObject.order == i) {
+                        tileObject.draw();
+                    }
+                });
+            }
+        }
     }
     getSizeInPixels(): Vector {
         return new Vector(this.mapSizeX * this.tileSize, this.mapSizeY * this.tileSize);

@@ -1,7 +1,6 @@
 import { Color } from 'p5';
 import MapContext from '../Context/MapContext';
 import BackTile from './BackTile';
-import FrontTile from './FrontTile';
 
 export default class Tile {
     x: number;
@@ -9,15 +8,11 @@ export default class Tile {
     width: number;
     height: number;
     backTile: BackTile;
-    frontTile: FrontTile[];
-    private isHighlighted: boolean = false;
-    private highlightColor: Color = color(255, 255, 255, 40);
     constructor(x: number, y: number, width: number, height: number) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.frontTile = [];
     }
     draw() {
         noStroke();
@@ -33,15 +28,8 @@ export default class Tile {
                     rect(this.x * this.width, this.y * this.height, this.width, this.height);
                     fill('black');
                 }
-                this.frontTile.forEach((tile) => {
-                    tile.draw(this.x, this.y, this.width, this.height);
-                });
-                if (this.isHighlighted) {
-                    fill(this.highlightColor);
-                    rect(this.x * this.width, this.y * this.height, this.width, this.height);
-                }
+
                 fill('black');
-                this.isHighlighted = false;
             }
         }
     }
@@ -49,15 +37,8 @@ export default class Tile {
         this.width += size;
         this.height += size;
     }
-    highlight(color: Color) {
-        this.highlightColor = color;
-        this.isHighlighted = true;
-    }
 
     setBack(backTile: BackTile) {
         this.backTile = backTile;
-    }
-    addFront(frontTile: FrontTile) {
-        this.frontTile.push(frontTile);
     }
 }
