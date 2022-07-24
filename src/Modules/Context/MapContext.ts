@@ -46,9 +46,9 @@ export default class MapContext {
     getSizeInPixels(): Vector {
         return new Vector(this.mapSizeX * this.tileSize, this.mapSizeY * this.tileSize);
     }
-    setTileSize(tileSize: number) {
+    setTileSize(tileSize: number): boolean {
         if (this.tileSize + tileSize < 50 || this.tileSize + tileSize > 100) {
-            return;
+            return false;
         }
         this.tileSize += tileSize;
         this.tiles.forEach((tiles) => {
@@ -56,6 +56,7 @@ export default class MapContext {
                 tile.changeSize(tileSize);
             });
         });
+        return true;
     }
     getTileBaseOnPosition(position: Vector): Tile {
         const camera = context.camera;

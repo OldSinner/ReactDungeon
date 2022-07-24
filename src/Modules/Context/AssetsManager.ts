@@ -9,6 +9,7 @@ export default class AssetsManager {
         this.sprites['tree_01_01'] = loadImage('/Assets/Sprites/Env/Tree_01_01.png');
         this.sprites['tree_01_02'] = loadImage('/Assets/Sprites/Env/Tree_01_02.png');
         this.sprites['floor_w_01'] = loadImage('/Assets/Sprites/Env/Floor_w_01.png');
+        this.sprites['char_01'] = loadImage('/Assets/Sprites/Entity/Player/char_01.png');
 
         console.log('assets loaded');
     }

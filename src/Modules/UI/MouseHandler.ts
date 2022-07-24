@@ -1,6 +1,7 @@
 import { Color, Vector } from 'p5';
 import WorldContext from '../Context/WorldContext';
 import Tile from '../MapElements/Tile';
+import Player from '../Objects/Entity/Player';
 
 export default class MouseHandler {
     x: number = 0;
@@ -17,8 +18,10 @@ export default class MouseHandler {
         const tile = mapContext.getTileBaseOnPosition(new Vector(this.x, this.y));
         if (keyIsDown(CONTROL)) {
             objsManager.EnvTiles['floor_w_01'].build(tile);
-        } else {
+        } else if (keyIsDown(SHIFT)) {
             objsManager.EnvTiles['tree_01'].build(tile);
+        } else if (keyIsDown(ALT)) {
+            new Player(new Vector(mouseX, mouseY), 'char_01');
         }
     }
 }
